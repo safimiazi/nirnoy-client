@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Bell, ChevronRight } from "lucide-react";
 import { ThemeToggle } from "../theme-toggle";
 import { usePathname } from "next/navigation";
