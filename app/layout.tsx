@@ -36,6 +36,7 @@ export const metadata = {
     creator: "@shafimiazi",
     images: ["https://nirnoy.com/twitter-image.jpg"],
   },
+  
   robots: "index, follow",
   themeColor: "#ffffff",
 };
