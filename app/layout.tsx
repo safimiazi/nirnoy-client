@@ -59,7 +59,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ClientLayout>{children}</ClientLayout>{" "}
-        {/* Use ClientLayout to handle client-side logic */}
       </body>
     </html>
   );
