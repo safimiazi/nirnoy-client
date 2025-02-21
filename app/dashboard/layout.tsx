@@ -10,7 +10,6 @@ const layout = ({ children }: any) => {
   return (
     <div className={`flex h-screen ${theme === "dark" ? "dark" : ""}`}>
       <Sidebar />
-
       <div className="w-full flex flex-1 flex-col">
         <header className="h-16 border-b border-gray-200 dark:border-[#1F1F23]">
           <TopNav />
