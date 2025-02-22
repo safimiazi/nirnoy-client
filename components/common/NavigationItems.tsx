@@ -1,84 +1,85 @@
+import { Home, BookOpen, ClipboardList, FileText, User, Settings } from "lucide-react";
 export interface INavigationItems {
-    name: string;
-    path: string | "/";
+    name: {
+      title: string;
+      description?: string;
+      icon: JSX.Element;
+    };
+    path: string;
     children?: INavigationItems[];
   }
   
-  export const NavigationItems: INavigationItems[] = [
-    {
-      name: "Services",
-      path: "/services",
-      children: [
-        {
-          name: "Web Development",
-          path: "/services/web-development",
-        },
-        {
-          name: "Mobile App Development",
-          path: "/services/mobile-app-development",
-        },
-        {
-          name: "UI/UX Design",
-          path: "/services/ui-ux-design",
-        },
-        {
-          name: "Digital Marketing",
-          path: "/services/digital-marketing",
-        },
-        {
-          name: "SEO Optimization",
-          path: "/services/seo-optimization",
-        },
-      ],
+export const NavigationItems: INavigationItems[] = [
+  {
+    name: {
+      icon: <Home size={20} />,
+      title: "Home",
+      description: "Go to the dashboard",
     },
-    {
-      name: "Products",
-      path: "/products",
-      children: [
-        {
-          name: "Product 1",
-          path: "/products/product-1",
-        },
-        {
-          name: "Product 2",
-          path: "/products/product-2",
-        },
-        {
-          name: "Product 3",
-          path: "/products/product-3",
-        },
-      ],
+    path: "/",
+  },
+  {
+    name: {
+      icon: <BookOpen size={20} />,
+      title: "Subjects",
+      description: "Browse available subjects",
     },
-    {
-      name: "Projects",
-      path: "/projects",
+    path: "/subjects",
+    children: [
+      {
+        name: {
+          icon: <FileText size={20} />,
+          title: "Mathematics",
+        },
+        path: "/subjects/math",
+      },
+      {
+        name: {
+          icon: <FileText size={20} />,
+          title: "Physics",
+        },
+        path: "/subjects/physics",
+      },
+    ],
+  },
+  {
+    name: {
+      icon: <ClipboardList size={20} />,
+      title: "Exams",
+      description: "Take a test or view past results",
     },
-    {
-      name: "About Us",
-      path: "/about-us",
-      children: [
-        {
-          name: "Company Overview",
-          path: "/about-us/company-overview",
+    path: "/exams",
+    children: [
+      {
+        name: {
+          icon: <FileText size={20} />,
+          title: "Mock Tests",
         },
-        {
-          name: "Our Team",
-          path: "/about-us/our-team",
+        path: "/exams/mock-tests",
+      },
+      {
+        name: {
+          icon: <FileText size={20} />,
+          title: "Past Papers",
         },
-        {
-          name: "Careers",
-          path: "/about-us/careers",
-        },
-        {
-          name: "Contact Us",
-          path: "/about-us/contact",
-        },
-      ],
+        path: "/exams/past-papers",
+      },
+    ],
+  },
+  {
+    name: {
+      icon: <User size={20} />,
+      title: "Profile",
+      description: "View and edit your profile",
     },
-    {
-      name: "Blog",
-      path: "/blog",
-    }
- 
-  ];
-  
+    path: "/profile",
+  },
+  {
+    name: {
+      icon: <Settings size={20} />,
+      title: "Settings",
+      description: "Adjust your preferences",
+    },
+    path: "/settings",
+  },
+];
