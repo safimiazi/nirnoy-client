@@ -37,7 +37,7 @@ const TopNav = () => {
                   <li key={childIndex} className="group relative">
                     <Link
                       href={child.path}
-                      className="flex items-center gap-3 px-3 py-3 text-gray-700 dark:text-gray-300 hover:border dark:hover:bg-gray-700 transition-all duration-300 rounded-md whitespace-nowrap"
+                      className="flex items-center gap-3 px-3 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-50x dark:hover:bg-gray-700 transition-all duration-300 rounded-md whitespace-nowrap"
                     >
                       <span className="p-2 rounded-full border-2 border-gray-300 dark:border-gray-600">
                         {child.name.icon}
