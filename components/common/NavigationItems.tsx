@@ -30,6 +30,8 @@ export const NavigationItems: INavigationItems[] = [
         name: {
           icon: <FileText size={20} />,
           title: "Mathematics",
+          description: "Browse available subjects",
+
         },
         path: "/subjects/math",
       },
@@ -37,6 +39,8 @@ export const NavigationItems: INavigationItems[] = [
         name: {
           icon: <FileText size={20} />,
           title: "Physics",
+          description: "Browse available subjects",
+
         },
         path: "/subjects/physics",
       },
@@ -54,6 +58,8 @@ export const NavigationItems: INavigationItems[] = [
         name: {
           icon: <FileText size={20} />,
           title: "Mock Tests",
+          description: "Browse available subjects",
+
         },
         path: "/exams/mock-tests",
       },
@@ -61,6 +67,8 @@ export const NavigationItems: INavigationItems[] = [
         name: {
           icon: <FileText size={20} />,
           title: "Past Papers",
+          description: "Browse available subjects",
+
         },
         path: "/exams/past-papers",
       },
