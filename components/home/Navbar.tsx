@@ -3,10 +3,10 @@ import ContentWidth from '../common/ContentWidth';
 
 const Navbar = () => {
     return (
-        <div className='w-0'>
+        <div className=''>
             <ContentWidth>
-                <div>
-                    
+                <div className='w-full h-10 rounded-full bg-slate-900/50 backdrop-blur-md sh'>
+
                 </div>
             </ContentWidth>
         </div>
