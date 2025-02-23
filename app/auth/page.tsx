@@ -8,7 +8,6 @@ import {
   PhoneOutlined,
 } from "@ant-design/icons";
 
-
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
 
@@ -17,16 +16,30 @@ const AuthForm = () => {
   };
 
   const onFinish = (values: any) => {
-    console.log("Form values:", values);
+    try {
+      if (isLogin) {
+        const data = {
+          email: values.email,
+          password: values.password,
+        };
+      } else {
+        const data = {
+          password: values.password,
+          student: {
+            name: values.name,
+            email: values.email,
+            contactNo: values.contactNo,
+          },
+        };
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
-
-
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-800">
       <div className="bg-white dark:bg-gray-700 p-8 rounded-lg shadow-lg w-96 transform transition-all duration-500 ease-in-out hover:scale-105">
-   
-
         <h1 className="text-2xl font-bold mb-6 text-center text-black dark:text-white">
           {isLogin ? "Login" : "Register"}
         </h1>
@@ -60,7 +73,6 @@ const AuthForm = () => {
             />
           </Form.Item>
 
-
           {!isLogin && (
             <Form.Item
               name="contactNo"
@@ -68,10 +80,6 @@ const AuthForm = () => {
                 {
                   required: true,
                   message: "Please input your contact number!",
-                },
-                {
-                  pattern: /^[0-9]{10}$/,
-                  message: "Please enter a valid 10-digit contact number!",
                 },
               ]}
             >
@@ -140,7 +148,11 @@ const AuthForm = () => {
           <span className="text-gray-600 dark:text-gray-300">
             {isLogin ? "Don't have an account?" : "Already have an account?"}
           </span>
-          <Button type="link" onClick={toggleForm} className="dark:text-white text-black dark:hover:text-gray-50">
+          <Button
+            type="link"
+            onClick={toggleForm}
+            className="dark:text-white text-black dark:hover:text-gray-50"
+          >
             {isLogin ? "Register here" : "Login here"}
           </Button>
         </div>
