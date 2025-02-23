@@ -11,11 +11,13 @@ import {
   useStudentLoginMutation,
   useStudentRegistrationMutation,
 } from "@/components/redux/api/studentApi/authApi/AuthApi.mutation";
+import { useRouter } from "next/navigation";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [studentRegistration, { isLoading: registring }] =
     useStudentRegistrationMutation();
+    const router = useRouter()
   const [studentLogin, { isLoading: loging }] = useStudentLoginMutation();
   const toggleForm = () => {
     setIsLogin(!isLogin);
@@ -41,16 +43,21 @@ const AuthForm = () => {
         };
 
         response = await studentRegistration(data).unwrap();
+        setIsLogin(true)
       }
 
       notification.success({
         message: "Success",
-        description: response.message,
+        description: response?.message,
       });
+
+      if(isLogin){
+        router.push("/dashboard")
+      }
     } catch (error) {
       notification.error({
         message: "Error",
-        description: (error as any).data.message,
+        description: (error as any)?.data?.message,
       });
     }
   };
