@@ -9,7 +9,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
   
     
   }),
-  tagTypes:["login_admin"],
+  tagTypes:["login_admin","login_student"],
 
   endpoints: () => ({}),
 });
