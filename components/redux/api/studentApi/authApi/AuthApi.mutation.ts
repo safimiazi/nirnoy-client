@@ -5,7 +5,7 @@ const authApiMutation = mainApi.injectEndpoints({
     studentLogin: build.mutation({
       query: (loginData) => {
         return {
-          url: "/users/login",
+          url: "/auth/login",
           method: "POST",
 
           body: loginData,

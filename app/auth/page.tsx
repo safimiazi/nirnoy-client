@@ -7,21 +7,25 @@ import {
   MailOutlined,
   PhoneOutlined,
 } from "@ant-design/icons";
+import { useStudentLoginMutation, useStudentRegistrationMutation } from "@/components/redux/api/studentApi/authApi/AuthApi.mutation";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
-
+const [studentRegistration, {isLoading: registring}] = useStudentRegistrationMutation()
+const [studentLogin, {isLoading: loging}] = useStudentLoginMutation()
   const toggleForm = () => {
     setIsLogin(!isLogin);
   };
 
-  const onFinish = (values: any) => {
+  const onFinish = async(values: any) => {
     try {
       if (isLogin) {
         const data = {
           email: values.email,
           password: values.password,
         };
+        const response = await studentLogin(data);
+        console.log(response);
       } else {
         const data = {
           password: values.password,
@@ -31,6 +35,9 @@ const AuthForm = () => {
             contactNo: values.contactNo,
           },
         };
+
+        const response = await studentRegistration(data);
+        console.log(response);
       }
     } catch (error) {
       console.error(error);
