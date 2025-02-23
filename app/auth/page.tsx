@@ -1,31 +1,35 @@
 "use client";
 import React, { useState } from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, notification } from "antd";
 import {
   UserOutlined,
   LockOutlined,
   MailOutlined,
   PhoneOutlined,
 } from "@ant-design/icons";
-import { useStudentLoginMutation, useStudentRegistrationMutation } from "@/components/redux/api/studentApi/authApi/AuthApi.mutation";
+import {
+  useStudentLoginMutation,
+  useStudentRegistrationMutation,
+} from "@/components/redux/api/studentApi/authApi/AuthApi.mutation";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
-const [studentRegistration, {isLoading: registring}] = useStudentRegistrationMutation()
-const [studentLogin, {isLoading: loging}] = useStudentLoginMutation()
+  const [studentRegistration, { isLoading: registring }] =
+    useStudentRegistrationMutation();
+  const [studentLogin, { isLoading: loging }] = useStudentLoginMutation();
   const toggleForm = () => {
     setIsLogin(!isLogin);
   };
 
-  const onFinish = async(values: any) => {
+  const onFinish = async (values: any) => {
     try {
+      let response;
       if (isLogin) {
         const data = {
           email: values.email,
           password: values.password,
         };
-        const response = await studentLogin(data);
-        console.log(response);
+        response = await studentLogin(data).unwrap();
       } else {
         const data = {
           password: values.password,
@@ -36,11 +40,18 @@ const [studentLogin, {isLoading: loging}] = useStudentLoginMutation()
           },
         };
 
-        const response = await studentRegistration(data);
-        console.log(response);
+        response = await studentRegistration(data).unwrap();
       }
+
+      notification.success({
+        message: "Success",
+        description: response.message,
+      });
     } catch (error) {
-      console.error(error);
+      notification.error({
+        message: "Error",
+        description: (error as any).data.message,
+      });
     }
   };
 
